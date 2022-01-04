@@ -1,0 +1,6 @@
+ip player:user?(context self) {
+    permission swamplogger.ip
+    help Checks the server IP at current time
+    user everyone
+    hook checkip
+}

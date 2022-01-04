@@ -1,0 +1,9 @@
+name: SwampLogger
+version: '${version}'
+main: dev.sweetierick.serveriplogger.SwampLogger
+api-version: 1.18
+prefix: SwpLogr
+authors: [ SweetieRick ]
+description: A simple logger that gathers the server IP at each restart and sends it over Webhook
+depend:
+  - RedLib
