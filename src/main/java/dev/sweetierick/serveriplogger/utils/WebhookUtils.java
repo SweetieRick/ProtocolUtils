@@ -45,7 +45,7 @@ public class WebhookUtils {
                 while ((responseLine = br.readLine()) != null) {
                     response.append(responseLine.trim());
                 }
-                Logger logger = Logger.getLogger("Logger");
+                Logger logger = Logger.getLogger("[ProtocolUtils]");
                 logger.info(response.toString());
             }
 

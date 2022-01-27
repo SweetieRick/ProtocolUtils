@@ -8,7 +8,7 @@ import java.net.URL;
 
 public class ProtocolUtils {
     /**
-     * Gets the external IP of the machine trough a valid IP checker
+     * Gets the external IP of the machine through a valid IP checker
      * @param checkerUrl The URL of a checker API
      * @param player The player to forward the message, if any
      */
