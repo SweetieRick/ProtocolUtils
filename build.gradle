@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'dev.sweetierick'
-version = '1.1'
+version = '1.1.2'
 
 repositories {
     mavenCentral()
@@ -22,8 +22,8 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'org.spigotmc:spigot-api:1.18.1-R0.1-SNAPSHOT'
-    implementation 'com.github.Redempt:RedLib:6.2.1.7'
+    compileOnly 'org.spigotmc:spigot-api:1.19-R0.1-SNAPSHOT'
+    implementation 'com.github.Redempt:RedLib:6.5.2.1'
 }
 
 def targetJavaVersion = 17
@@ -34,6 +34,12 @@ java {
     if (JavaVersion.current() < javaVersion) {
         toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
     }
+}
+
+shadowJar {
+    archiveBaseName.set('ProtocolUtils')
+    archiveClassifier.set('stable')
+    archiveVersion.set('1.1.2')
 }
 
 tasks.withType(JavaCompile).configureEach {
