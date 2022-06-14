@@ -1,6 +1,6 @@
-package dev.sweetierick.serveriplogger;
+package dev.sweetierick.protocolutils;
 
-import dev.sweetierick.serveriplogger.utils.WebhookUtils;
+import dev.sweetierick.protocolutils.utils.*;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -11,6 +11,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import redempt.redlib.commandmanager.CommandHook;
 import redempt.redlib.commandmanager.CommandParser;
 
+import java.net.MalformedURLException;
 import java.util.logging.Logger;
 
 public final class ProtocolUtils extends JavaPlugin implements Listener {
@@ -40,11 +41,19 @@ public final class ProtocolUtils extends JavaPlugin implements Listener {
         String JsonEmbed = config.getString("JsonQuery");
         String checkerUrl = config.getString("checkerUrl");
 
-        if (JsonEmbed != null | webhookUrl != null && config.getBoolean("forward-server-ip")) {
-            WebhookUtils.forwardToWebhook(webhookUrl, JsonEmbed);
-        } else {
-            throw new RuntimeException("ERROR: Configuration file for ProtocolUtils is incomplete! Please fill out the missing information in the file. If it is badly formatted, please use this website to check for format errors: http://www.yamllint.com");
+        try {
+            if (JsonEmbed != null | webhookUrl != null && config.getBoolean("forward-server-ip")) {
+                WebhookUtils.forwardToWebhook(webhookUrl, JsonEmbed);
+            }
+        } catch(Error e) {
+            logger.severe("ERROR: Configuration file for ProtocolUtils is incomplete: Webhook or JsonEmbed params are invalid! \nPlease fill out the missing information in the file. Use this website to check for format errors: http://www.yamllint.com");
         }
+
+        /*
+        else {
+            throw new RuntimeException();
+        }
+        */
 
         // Enables server side Event registration
         getServer().getPluginManager().registerEvents(this, this);
@@ -60,13 +69,13 @@ public final class ProtocolUtils extends JavaPlugin implements Listener {
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         // Just a small thing for fun
-        event.setMessage(event.getMessage().replaceAll("sus", "ඞ"));
+        event.setMessage(event.getMessage().replaceAll("\"sus\"gm", "ඞ"));
     }
 
     @CommandHook("checkip")
     public void checkIpCommand(CommandSender sender, Player player) {
         String targetUrl = config.getString("checkerUrl");
         // Gets the external IP and sends it to the player
-        dev.sweetierick.serveriplogger.utils.ProtocolUtils.getExternalIP(targetUrl, player);
+        dev.sweetierick.protocolutils.utils.ProtocolUtils.getExternalIP(targetUrl, player);
     }
 }

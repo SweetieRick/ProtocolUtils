@@ -1,4 +1,4 @@
-package dev.sweetierick.serveriplogger.utils;
+package dev.sweetierick.protocolutils.utils;
 
 import org.bukkit.entity.Player;
 import java.io.BufferedReader;
