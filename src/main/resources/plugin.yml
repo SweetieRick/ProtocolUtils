@@ -1,7 +1,7 @@
 name: ProtocolUtils
 version: '${version}'
-main: dev.sweetierick.serveriplogger.ProtocolUtils
-api-version: 1.18
+main: dev.sweetierick.protocolutils.ProtocolUtils
+api-version: 1.19
 prefix: ProtocolUtils
 authors: [ SweetieRick ]
 description: A simple lib to help forwarding messages to HTTPS endpoints
